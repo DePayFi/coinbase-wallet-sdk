@@ -9,13 +9,9 @@ const umd = {
     path: path.resolve(__dirname, 'dist/umd')
   },
   node: {
-    Buffer: true
+    Buffer: true,
+    "crypto": require.resolve("crypto-browserify")
   },
-  resolve: {
-    alias: {
-      "crypto": "crypto-browserify"
-    }
-  }
 }
 
 const esm = {
@@ -30,12 +26,8 @@ const esm = {
   ],
   node: {
     Buffer: true,
+    "crypto": require.resolve("crypto-browserify")
   },
-  resolve: {
-    alias: {
-      "crypto": "crypto-browserify"
-    }
-  }
 }
 
 module.exports = [umd, esm]
