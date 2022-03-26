@@ -9,7 +9,8 @@ const umd = {
     path: path.resolve(__dirname, 'dist/umd')
   },
   node: {
-    Buffer: true
+    Buffer: true,
+    crypto: true
   }
 }
 
