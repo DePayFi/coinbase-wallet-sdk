@@ -4,7 +4,7 @@ const EsmWebpackPlugin = require("@purtuga/esm-webpack-plugin");
 const umd = {
   output: {
     filename: 'index.js',
-    library: 'CoinbaseWalletSDK',
+    library: 'CoinbaseWalletSdk',
     libraryTarget: 'umd',
     path: path.resolve(__dirname, 'dist/umd')
   },
@@ -16,7 +16,7 @@ const umd = {
 const esm = {
   output: {
     filename: 'index.js',
-    library: 'CoinbaseWalletSDK',
+    library: 'CoinbaseWalletSdk',
     libraryTarget: 'var',
     path: path.resolve(__dirname, 'dist/esm')
   },
