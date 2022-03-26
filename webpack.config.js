@@ -9,8 +9,12 @@ const umd = {
     path: path.resolve(__dirname, 'dist/umd')
   },
   node: {
-    Buffer: true,
-    crypto: true
+    Buffer: true
+  },
+  resolve: {
+    alias: {
+      "crypto": "crypto-browserify"
+    }
   }
 }
 
@@ -26,7 +30,11 @@ const esm = {
   ],
   node: {
     Buffer: true,
-    crypto: true
+  },
+  resolve: {
+    alias: {
+      "crypto": "crypto-browserify"
+    }
   }
 }
 
