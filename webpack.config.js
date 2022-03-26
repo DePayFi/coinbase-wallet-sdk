@@ -24,7 +24,8 @@ const esm = {
     new EsmWebpackPlugin()
   ],
   node: {
-    Buffer: true
+    Buffer: true,
+    crypto: true
   }
 }
 
