@@ -10,15 +10,17 @@ const umd = {
     libraryTarget: 'umd',
     path: path.resolve(__dirname, 'dist/umd')
   },
-  resolve: {
-    fallback: {
-      // stream: require.resolve('stream-browserify'),
-    },
-  },
   plugins: [
     new webpack.ProvidePlugin({
-       Buffer: ['buffer', 'Buffer'],
+      Buffer: ['buffer', 'Buffer'],
     }),
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify("production"),
+        LINK_API_URL: JSON.stringify("https://www.walletlink.org"),
+        SDK_VERSION: JSON.stringify("3.0.5")
+      }
+    })
   ],
 }
 
@@ -33,15 +35,17 @@ const esm = {
     libraryTarget: 'module',
     path: path.resolve(__dirname, 'dist/esm')
   },
-  resolve: {
-    fallback: {
-      // stream: require.resolve('stream-browserify'),
-    },
-  },
   plugins: [
     new webpack.ProvidePlugin({
-       Buffer: ['buffer', 'Buffer'],
+      Buffer: ['buffer', 'Buffer'],
     }),
+    new webpack.DefinePlugin({
+      "process.env": {
+        NODE_ENV: JSON.stringify("production"),
+        LINK_API_URL: JSON.stringify("https://www.walletlink.org"),
+        SDK_VERSION: JSON.stringify("3.0.5")
+      }
+    })
   ],
 }
 

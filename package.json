@@ -1,6 +1,6 @@
 {
   "name": "@depay/coinbase-wallet-sdk",
-  "version": "0.9.12",
+  "version": "0.9.21",
   "description": "Coinbase Wallet SDK browser pre-built usable in rollup bundles.",
   "main": "dist/umd/index.js",
   "module": "dist/esm/index.js",
@@ -23,12 +23,14 @@
   },
   "homepage": "https://github.com/DePayFi/coinbase-wallet-sdk#readme",
   "devDependencies": {
+    "@peculiar/webcrypto": "^1.3.3",
+    "buffer": "^6.0.3",
+    "cross-fetch": "^3.1.5",
+    "util": "^0.12.4",
     "webpack": "^5.49.0",
     "webpack-cli": "^4.9.2"
   },
   "dependencies": {
-    "@coinbase/wallet-sdk": "^3.0.5",
-    "buffer": "^6.0.3",
-    "util": "^0.12.4"
+    "@coinbase/wallet-sdk": "^3.0.5"
   }
 }
