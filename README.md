@@ -24,4 +24,8 @@ import fetch from 'cross-fetch'
 global.fetch = fetch
 ```
 
-Both are installed as a dev dependency with coinbase-wallet-sdk. 
+Make sure you install `@peculiar/webcrypto` and `cross-fetch` as dev dependencies:
+
+```
+yarn add @peculiar/webcrypto cross-fetch --dev
+```
