@@ -1,51 +1,31 @@
-const webpack = require('webpack');
 const path = require('path');
+const EsmWebpackPlugin = require("@purtuga/esm-webpack-plugin");
 
-module.exports = [
-  {
-    target: "web",
-    mode: "production",
-    output: {
-      filename: 'index.js',
-      library: 'CoinbaseWalletSdk',
-      libraryTarget: 'umd',
-      path: path.resolve(__dirname, 'dist/umd')
-    },
-    plugins: [
-      new webpack.ProvidePlugin({
-        Buffer: ['buffer', 'Buffer'],
-      }),
-      new webpack.DefinePlugin({
-        "process.env": {
-          NODE_ENV: JSON.stringify("production"),
-          LINK_API_URL: JSON.stringify("https://www.walletlink.org"),
-          SDK_VERSION: JSON.stringify("3.0.5")
-        }
-      })
-    ],
+const umd = {
+  output: {
+    filename: 'index.js',
+    library: 'CoinbaseWalletSdk',
+    libraryTarget: 'umd',
+    path: path.resolve(__dirname, 'dist/umd')
   },
-  {
-    target: "web",
-    mode: "production",
-    experiments: {
-      outputModule: true,
-    },
-    output: {
-      filename: 'index.js',
-      libraryTarget: 'module',
-      path: path.resolve(__dirname, 'dist/esm')
-    },
-    plugins: [
-      new webpack.ProvidePlugin({
-        Buffer: ['buffer', 'Buffer'],
-      }),
-      new webpack.DefinePlugin({
-        "process.env": {
-          NODE_ENV: JSON.stringify("production"),
-          LINK_API_URL: JSON.stringify("https://www.walletlink.org"),
-          SDK_VERSION: JSON.stringify("3.0.5")
-        }
-      })
-    ],
+  node: {
+    Buffer: true
   }
-]
+}
+
+const esm = {
+  output: {
+    filename: 'index.js',
+    library: 'CoinbaseWalletSdk',
+    libraryTarget: 'var',
+    path: path.resolve(__dirname, 'dist/esm')
+  },
+  plugins: [
+    new EsmWebpackPlugin()
+  ],
+  node: {
+    Buffer: true
+  }
+}
+
+module.exports = [umd, esm]
