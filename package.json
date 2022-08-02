@@ -1,6 +1,6 @@
 {
   "name": "@depay/coinbase-wallet-sdk",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Coinbase Wallet SDK browser pre-built usable in rollup bundles.",
   "main": "dist/umd/index.js",
   "module": "dist/esm/index.js",
@@ -16,7 +16,7 @@
     "wallet sdk",
     "rollup"
   ],
-  "author": "https://depay.fi",
+  "author": "depay.com",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/DePayFi/coinbase-wallet-sdk/issues"
