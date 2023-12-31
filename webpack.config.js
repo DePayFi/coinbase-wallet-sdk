@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 // Base configuration
 const baseConfig = {
@@ -23,13 +24,25 @@ const baseConfig = {
         ],
     },
 
+    plugins: [
+        // ... (other plugins)
+        new webpack.ProvidePlugin({
+            Buffer: ['buffer', 'Buffer'],
+        }),
+    ],
+
     // Resolve options
     resolve: {
         extensions: ['.js'], // Add other extensions if needed
+        fallback: {
+            "buffer": require.resolve("buffer/")
+        },
     },
 
     // Mode (development or production)
     mode: 'production',
+
+    target: 'web',
 
     // Optional: Source map configuration for development
     devtool: 'source-map',
