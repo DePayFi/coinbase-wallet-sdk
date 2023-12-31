@@ -1,31 +1,56 @@
 const path = require('path');
-const EsmWebpackPlugin = require("@purtuga/esm-webpack-plugin");
 
-const umd = {
-  output: {
-    filename: 'index.js',
-    library: 'CoinbaseWalletSdk',
-    libraryTarget: 'umd',
-    path: path.resolve(__dirname, 'dist/umd')
-  },
-  node: {
-    Buffer: true
-  }
-}
+module.exports = {
+    // The entry point of your library
+    entry: './src/index.js',
 
-const esm = {
-  output: {
-    filename: 'index.js',
-    library: 'CoinbaseWalletSdk',
-    libraryTarget: 'var',
-    path: path.resolve(__dirname, 'dist/esm')
-  },
-  plugins: [
-    new EsmWebpackPlugin()
-  ],
-  node: {
-    Buffer: true
-  }
-}
+    // Output configuration
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'index.js',
+        library: {
+            type: 'module',
+        },
+    },
 
-module.exports = [umd, esm]
+    // Experiments for enabling ESM
+    experiments: {
+        outputModule: true,
+    },
+
+    // Module and rules for handling JavaScript files
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env'],
+                        plugins: ['@babel/plugin-transform-runtime'],
+                    },
+                },
+            },
+            // Add other rules for different file types if needed
+        ],
+    },
+
+    // Resolve options
+    resolve: {
+        extensions: ['.js'], // Add other extensions if needed
+    },
+
+    // Mode (development or production)
+    mode: 'production',
+
+    // Optional: Configuration for webpack-dev-server
+    devServer: {
+        static: path.join(__dirname, 'public'),
+        compress: true,
+        port: 9000,
+    },
+
+    // Optional: Source map configuration for development
+    devtool: 'source-map',
+};
