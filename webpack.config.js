@@ -46,6 +46,10 @@ const baseConfig = {
 
     // Optional: Source map configuration for development
     devtool: 'source-map',
+
+    optimization: {
+        minimize: false,
+    },
 };
 
 // Configuration for ESM output
